@@ -1,0 +1,17 @@
+﻿## Strangely enough the first modifier seems to never work!
+dummy_modifier = {
+	local_unrest = -1
+	local_autonomy = -0.05
+
+	#icon = 1
+}
+
+## This is the Hashshashins' fortress
+hidden_fortress = {
+	local_defensiveness = 5.0
+	local_spy_defence = 0.50
+	local_hostile_attrition = 5
+	max_attrition = 5
+	local_autonomy = -0.2
+	army_tradition = 2.0
+}

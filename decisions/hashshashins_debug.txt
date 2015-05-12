@@ -1,0 +1,20 @@
+country_decisions = {
+
+	hashshashins_debug = {
+		potential = {
+			always = no
+		}
+		allow = {
+			check_variable = { which = hashshashin_assassination_chance value = 0 }
+			has_country_flag = hashshashin_assassination_succeeded
+			has_country_flag = hashshashins_assassination_inprogress
+			has_country_flag = hashshashins_target
+			has_country_flag = hashshashins_debugflag
+		}
+		effect = {
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+}

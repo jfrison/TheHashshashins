@@ -1,0 +1,253 @@
+namespace = hashshashins
+
+# subjugation opportunity
+country_event = {
+	id = hashshashins.101
+	title = "hashshashins_101_title"
+	desc = "hashshashins_101_desc"
+	picture = ASSASSINATION_eventPicture
+
+	trigger = {
+		tag = HSH
+		NOT = { has_country_flag = hashshashins_subjugation_inprogress }
+		any_country = {
+#		any_neighbor_country = {
+			has_opinion = { who = ROOT value = 50 }
+			religion_group = muslim
+			is_subject = no
+			NOT = {
+				any_country = { is_subject_of = PREV } # otherwise re-establishing this relation is annoying
+			}
+		}
+	}
+	
+	immediate = {
+		hidden_effect = {
+			set_country_flag = hashshashins_subjugation_inprogress
+			every_country = {
+				clr_country_flags = hashshashins_target
+			}
+			random_country = {
+#			random_neighbor_country = {
+				limit = {
+					has_opinion = { who = ROOT value = 50 }
+					religion_group = muslim
+					is_subject = no
+					NOT = {
+						any_country = { is_subject_of = PREV }
+					}
+				}
+				set_country_flag = hashshashins_subjugation_target
+			}
+		}
+	}
+	      
+	
+	mean_time_to_happen = {
+		months = 240
+		
+		modifier = {
+			factor = 0.6
+			any_country = {
+#			any_neighbor_country = {
+				has_opinion = { who = ROOT value = 150 }
+				religion_group = muslim
+				is_subject = no
+				NOT = {
+					any_country = { is_subject_of = PREV }
+				}
+			}
+		}
+
+		modifier = {
+			factor = 0.6
+			any_country = {
+#			any_neighbor_country = {
+				has_opinion = { who = ROOT value = 190 }
+				religion_group = muslim
+				is_subject = no
+				NOT = {
+					any_country = { is_subject_of = PREV }
+				}
+			}
+		}
+
+		modifier = {				
+			factor = 0.8
+			has_idea_group = spy_ideas
+		}
+
+		modifier = {				
+			factor = 0.7
+			advisor = spymaster
+		}
+		
+		modifier = {				
+			factor = 3.0
+			is_at_war = yes
+		}
+
+	}
+
+	option = {
+		name = "hashshashins_101_opta" #Try to subjugate them			
+		add_years_of_income = -0.6
+		
+		random_country = {
+			limit = { has_country_flag = hashshashins_subjugation_target }
+			country_event = {
+				id = "hashshashins.102"
+				days = 7
+			}
+		}
+	}
+
+	option = {
+		name = "hashshashins_101_optb"  #Make them love us
+		random_country = {
+			limit = { has_country_flag = hashshashins_subjugation_target }
+			add_years_of_income = -0.05
+			add_opinion = {
+				who = HSH
+				modifier = opinion_pleased
+				years = 10
+			}
+		}
+		clr_country_flag = hashshashins_subjugation_inprogress
+	}
+
+	option = {
+		name = "hashshashins_101_optc"  #Recruit new companions
+		add_piety = 0.15
+		add_manpower = 1
+		clr_country_flag = hashshashins_subjugation_inprogress
+	}
+
+}
+
+# we have been threatened
+country_event = {
+	id = hashshashins.102
+	title = "hashshashins_102_title"
+	desc = "hashshashins_102_desc"
+	picture = ASSASSINATION_eventPicture
+	
+	is_triggered_only = yes
+
+	option = {
+		name = "hashshashins_102_opta" # Do what they ask
+		ai_chance = {
+			factor = 50
+			modifier = {
+				has_opinion = { who = HSH value = 125 }
+				factor = 2
+			}
+			modifier = {
+				has_opinion = { who = HSH value = 190 }
+				factor = 2
+			}
+		}
+		HSH = { 
+			vassalize = ROOT
+			country_event = { # Report success
+				id = "hashshashins.103"
+				days = 7
+			}
+		}
+	}
+	
+	option = {
+		name = "hashshashins_102_optb" # Resist
+		ai_chance = {
+			factor = 50
+		}
+		add_opinion = {
+			who = HSH
+			modifier = opinion_displeased
+			years = 10
+		}
+		add_casus_belli = {
+			type = cb_spy_discovered
+			months = 12
+			target = HSH
+		}
+		HSH = {
+			add_casus_belli = {
+				type = cb_disloyal_vassal
+				months = 12
+				target = ROOT
+			}
+		}
+		random = {
+			chance = 33 # They might try to kill us
+			country_event = {
+				id = "hashshashins.2"
+				days = 7
+			}
+		}
+		HSH = { clr_country_flag = hashshashins_subjugation_inprogress }
+	}
+
+}
+
+# subjugation succeeded
+country_event = {
+	id = hashshashins.103
+	title = "hashshashins_103_title"
+	desc = "hashshashins_103_desc"
+	picture = ASSASSINATION_eventPicture
+	
+	is_triggered_only = yes
+
+	option = {
+		name = "hashshashins_103_opta"
+		add_piety = 0.10
+		clr_country_flag = hashshashins_subjugation_inprogress # so that you can have several such vassals
+		# break the vassalisation after some time
+		FROM = { 
+			country_event = {
+				id = "hashshashins.104"
+				days = 365
+			}
+		}
+	}
+}
+
+# subjugation expires
+country_event = {
+	id = hashshashins.104
+	title = "hashshashins_104_title"
+	desc = "hashshashins_104_desc"
+	picture = ASSASSINATION_eventPicture
+	
+	is_triggered_only = yes
+
+	option = {
+		name = "hashshashins_104_opta"
+		if = {
+			limit = { is_subject_of = HSH  }
+			HSH = {
+				free_vassal = PREV
+				country_event = {
+					id = "hashshashins.105"
+				}
+			}
+		}
+	}
+
+}
+
+# subjugation expires - warning HSH
+country_event = {
+	id = hashshashins.105
+	title = "hashshashins_105_title"
+	desc = "hashshashins_105_desc"
+	picture = ASSASSINATION_eventPicture
+	
+	is_triggered_only = yes
+
+	option = {
+		name = "hashshashins_105_opta"
+	}
+
+}

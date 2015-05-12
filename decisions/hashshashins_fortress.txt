@@ -1,0 +1,99 @@
+country_decisions = {
+
+	rebuild_fortress = {
+		major = yes
+		potential = {
+			tag = HSH
+			NOT = {
+				any_owned_province = {
+					has_province_modifier = hidden_fortress
+				}
+			}
+		}
+		allow = {
+			is_at_war = no
+			piety = 1.0
+			years_of_income = 20.0
+		}
+		effect = {
+			add_years_of_income = -20.0
+			# building phase finished
+			country_event = {
+				id = "hashshashins.502"
+				days = 720
+			}
+			set_variable = { which = hashshashins_discovered value = 0 }
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	renovate_fortress = {
+		potential = {
+			tag = HSH
+			any_owned_province = {
+				has_province_modifier = hidden_fortress
+			}
+			check_variable = { which = hashshashins_discovered value = 1 }
+		}
+		allow = {
+			is_at_war = no
+			years_of_income = 1.0
+			OR = {
+				NOT = { check_variable = { which = hashshashins_discovered value = 20 } }
+				years_of_income = 1.0
+			}
+			OR = {
+				NOT = { check_variable = { which = hashshashins_discovered value = 40 } }
+				years_of_income = 2.0
+			}
+			OR = {
+				NOT = { check_variable = { which = hashshashins_discovered value = 60 } }
+				years_of_income = 4.0
+			}
+			OR = {
+				NOT = { check_variable = { which = hashshashins_discovered value = 80 } }
+				years_of_income = 8.0
+			}
+			OR = {
+				NOT = { check_variable = { which = hashshashins_discovered value = 100 } }
+				years_of_income = 16.0
+			}
+		}
+		effect = {
+			add_years_of_income = -1.0
+			if = {
+				limit = { check_variable = { which = hashshashins_discovered value = 20 } }
+				add_years_of_income = -1.0
+			}
+			if = {
+				limit = { check_variable = { which = hashshashins_discovered value = 40 } }
+				add_years_of_income = -2.0
+			}
+			if = {
+				limit = { check_variable = { which = hashshashins_discovered value = 60 } }
+				add_years_of_income = -4.0
+			}
+			if = {
+				limit = { check_variable = { which = hashshashins_discovered value = 80 } }
+				add_years_of_income = -8.0
+			}
+			if = {
+				limit = { check_variable = { which = hashshashins_discovered value = 100 } }
+				add_years_of_income = -16.0
+			}
+			# building phase finished
+			country_event = {
+				id = "hashshashins.503"
+				days = 90
+			}
+			set_country_flag = renovate_fortress_inprogress
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+
+}

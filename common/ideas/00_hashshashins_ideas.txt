@@ -1,0 +1,46 @@
+# These ideas are loaded with all country ideas, before default ideas and group ideas.
+
+hashshashin_ideas = {
+	start = {
+		rebel_support_efficiency = 0.50
+	}
+	
+	bonus = {
+		technology_cost = -0.10
+	}
+	
+	trigger = {
+		tag = HSH
+	}
+	free = yes
+	
+	zealous_companions = {
+		global_spy_offence = 0.25
+		tolerance_own = 2
+		discipline = 0.25
+	}
+	grandmaster_ijtihad = {
+		idea_cost = -0.2
+		technology_cost = -0.05
+	}
+	infiltrators_influence = {
+		diplomatic_reputation = 2
+		diplomatic_upkeep = 2
+	}
+	elite_jihadists = {
+		advisor_cost = -0.25
+		free_leader_pool = 1
+	}
+	pluralism_of_the_ummah = {
+		accepted_culture_threshold = -0.3
+		years_of_nationalism = -10
+	}
+	shii_propagandists = {
+		global_unrest = -1
+		global_missionary_strength = 0.02
+	}
+	hashshashin_empire = {
+		vassal_income = 0.5
+	}
+}
+

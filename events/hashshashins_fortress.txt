@@ -1,0 +1,91 @@
+namespace = hashshashins
+
+# our fortress has been discovered
+country_event = {
+	id = hashshashins.501
+	title = "hashshashins_501_title"
+	desc = "hashshashins_501_desc"
+	picture = FORT_eventPicture
+
+	trigger = {
+		tag = HSH
+		check_variable = { which = hashshashins_discovered value = 100 }
+	}
+	
+	
+	mean_time_to_happen = {
+		months = 1
+	}
+
+	option = {
+		name = "hashshashins_501_opta" #This is catastrophic
+		every_owned_province = {
+			limit = { has_province_modifier = hidden_fortress }
+			remove_province_modifier = hidden_fortress
+			# we should also remove all the modifiers which are related to the fortress
+		}
+	}
+
+}
+
+# The fortress has been rebuilt
+country_event = {
+	id = hashshashins.502
+	title = "hashshashins_502_title"
+	desc = "hashshashins_502_desc"
+	picture = FORT_eventPicture
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = HSH
+	}
+	
+	option = {
+		name = "hashshashins_502_opta" #What a relief!
+		capital {
+			add_province_modifier = {
+				name = hidden_fortress
+				duration = -1
+			}
+		}
+	}
+
+}
+
+# The fortress has been renovated
+country_event = {
+	id = hashshashins.503
+	title = "hashshashins_503_title"
+	desc = "hashshashins_503_desc"
+	picture = FORT_eventPicture
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = HSH
+	}
+	
+	option = {
+		name = "hashshashins_503_opta" #Let us hope that's enough
+		trigger = {
+			any_owned_province = {
+				has_province_modifier = hidden_fortress
+			}
+		}
+		change_variable = { which = hashshashins_discovered value = -5 }
+		clr_country_flag = renovate_fortress_inprogress
+	}
+	option = {
+		name = "hashshashins_503_optb" #The fortress? Which fortress?
+		trigger = {
+			NOT = {
+				any_owned_province = {
+					has_province_modifier = hidden_fortress
+				}
+			}
+		}
+		clr_country_flag = renovate_fortress_inprogress
+	}
+
+}

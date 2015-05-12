@@ -1,0 +1,18 @@
+government = hashshashin_theocracy
+primary_culture = persian
+#culture_group_union = iranian
+religion = shiite
+technology_group = muslim
+capital = 2215 # Qazvin/Alamut
+
+
+1438.1.1 = {
+	monarch = {
+		name = "Hassan"
+		dynasty = "Al-Ghul"
+		adm = 1
+		dip = 4
+		mil = 2
+	}
+	add_piety = 0.45
+}

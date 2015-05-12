@@ -1,0 +1,211 @@
+namespace = hashshashins
+
+# an informer has approached us
+country_event = {
+	id = hashshashins.401
+	title = "hashshashins_401_title"
+	desc = "hashshashins_401_desc"
+	picture = ASSASSINATION_eventPicture
+
+	trigger = {
+		exists = HSH
+		has_discovered = HSH
+		NOT = { tag = HSH }
+		NOT = { HSH = { check_variable = { which = hashshashins_discovered value = 100 } } }
+	}
+	
+	
+	mean_time_to_happen = {
+		months = 180
+		
+		modifier = {		
+			factor = 0.7
+			years_of_income = 1.5
+		}
+		modifier = {		
+			factor = 3.0
+			NOT = { years_of_income = 0.5 }
+		}
+		modifier = {		
+			factor = 0.8
+			advisor = spymaster
+		}
+		modifier = {		
+			factor = 0.4
+			is_rival = HSH
+		}
+		modifier = {		
+			factor = 0.7
+			is_neighbor_of = HSH
+		}
+		modifier = {		
+			factor = 0.6
+			HSH = { NOT = { stability = 0 } }
+		}
+		modifier = {		
+			factor = 0.5
+			HSH = { NOT = { stability = -1 } }
+		}
+		modifier = {		
+			factor = 0.4
+			HSH = { NOT = { stability = -2 } }
+		}
+		modifier = {		
+			factor = 1.2
+			HSH = { piety = 0.2 }
+		}
+		modifier = {		
+			factor = 1.4
+			HSH = { piety = 0.4 }
+		}
+		modifier = {		
+			factor = 1.6
+			HSH = { piety = 0.6 }
+		}
+		modifier = {		
+			factor = 1.8
+			HSH = { piety = 0.8 }
+		}
+		modifier = {		
+			factor = 2.0
+			HSH = { piety = 1.0 }
+		}
+		modifier = {		
+			factor = 1.4
+			HSH = { advisor = spymaster }
+		}
+
+	}
+
+	option = {
+		name = "hashshashins_401_opta" #Buy this information			
+		ai_chance = {
+			factor = 50
+			modifier = {
+				has_opinion = { who = HSH value = 190 }
+				factor = 0
+			}
+			modifier = {
+				has_opinion = { who = HSH value = 100 }
+				factor = 0.4
+			}
+			modifier = {
+				has_opinion = { who = HSH value = 50 }
+				factor = 0.8
+			}
+			modifier = {
+				has_opinion = { who = HSH value = 0 }
+				factor = 0.7
+			}
+			modifier = {
+				has_opinion = { who = HSH value = -25 }
+				factor = 0.7
+			}
+			modifier = {
+				has_opinion = { who = HSH value = -50 }
+				factor = 0.7
+			}
+			modifier = {
+				has_opinion = { who = HSH value = -100 }
+				factor = 0.7
+			}
+			modifier = {
+				has_opinion = { who = HSH value = -200 }
+				factor = 0.7
+			}
+		}
+		add_years_of_income = -1.0
+		HSH = { 
+			change_variable = { which = hashshashins_discovered value = 1 } 
+			random_list = {
+				50 = {
+					set_country_flag = hashshashin_traitor
+					country_event = { # Traitor caught
+						id = "hashshashins.402"
+						days = 4
+					}
+				}
+				40 = { # We've made good use of this information
+					change_variable = { which = hashshashins_discovered value = 5 }
+				}
+				10 = {} # He had nothing interesting to say
+			}
+		}
+	}
+
+	option = {
+		name = "hashshashins_401_optb"	#It is too expensive
+		ai_chance = { factor = 50 }
+	}
+
+}
+
+# Traitor caught (but this could be a false positive)
+country_event = {
+	id = hashshashins.402
+	title = "hashshashins_402_title"
+	desc = "hashshashins_402_desc"
+	picture = ASSASSINATION_eventPicture
+
+	trigger = {
+		tag = HSH
+		NOT = { check_variable = { which = hashshashins_discovered value = 100 } }
+	}
+	
+	
+	mean_time_to_happen = {
+		months = 180
+		
+		modifier = {		
+			factor = 2.0
+			stability = 1
+		}
+		modifier = {		
+			factor = 0.7
+			NOT = { stability = 0 }
+		}
+		modifier = {		
+			factor = 0.7
+			NOT = { stability = -1 }
+		}
+		modifier = {		
+			factor = 0.7
+			NOT = { stability = -2 }
+		}
+	}
+	
+	option = {
+		name = "hashshashins_402_opta" #Execute him	
+		ai_chance = { factor = 30 }
+		add_piety = -0.20
+		clr_country_flag = hashshashin_traitor
+	}
+	option = {
+		name = "hashshashins_402_optb" #Carefully study the case
+		ai_chance = { factor = 50 }
+		add_adm_power = -50
+		random = {
+			chance = 20
+			hidden_effect = {
+				if = { #The trial failed to spot his culpability
+					limit = { has_country_flag = hashshashin_traitor }
+					change_variable = { which = hashshashins_discovered value = 5 }
+				}
+			}
+		}
+		clr_country_flag = hashshashin_traitor
+	}
+	option = {
+		name = "hashshashins_402_optc" #Set him free
+		ai_chance = { factor = 20 }
+		add_piety = 0.05
+		hidden_effect = {
+			if = { #This was actually a traitor
+				limit = { has_country_flag = hashshashin_traitor }
+				change_variable = { which = hashshashins_discovered value = 5 }
+			}
+		}
+		clr_country_flag = hashshashin_traitor
+	}
+
+}

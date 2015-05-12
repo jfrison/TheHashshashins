@@ -1,0 +1,78 @@
+namespace = hashshashins
+
+# converting a province
+province_event = {
+	id = hashshashins.301
+	title = "hashshashins_301_title"
+	desc = "hashshashins_301_desc"
+	picture = ASSASSINATION_eventPicture
+
+	trigger = {
+		exists = HSH
+		has_discovered = HSH
+		OR = {
+			religion_group = muslim
+			any_neighbor_province = { religion = HSH }
+		}
+		NOT = { owned_by = HSH }
+		NOT = { religion = HSH }
+	}
+	
+	
+	mean_time_to_happen = {
+		months = 4800
+		
+		modifier = {		
+			factor = 0.4
+			owner = { is_neighbor_of = HSH }
+		}
+		modifier = {		
+			factor = 2.0
+			NOT = { religion_group = muslim }
+		}
+		modifier = {		
+			factor = 0.8
+			HSH = { advisor = spymaster }
+		}
+		modifier = {		
+			factor = 0.8
+			HSH = { DIP = 5 }
+		}
+		modifier = {		
+			factor = 0.8
+			HSH = { piety = 1.0 }
+		}
+		modifier = {		
+			factor = 0.8
+			HSH = { piety = 0.9 }
+		}
+		modifier = {		
+			factor = 0.8
+			HSH = { piety = 0.8 }
+		}
+		modifier = {		
+			factor = 0.8
+			HSH = { piety = 0.6 }
+		}
+		modifier = {		
+			factor = 10
+			HSH = { NOT = { piety = 0.4 } }
+		}
+		modifier = {		
+			factor = 0.6
+			owner = { NOT = { stability = 0 } }
+		}
+		modifier = {		
+			factor = 0.5
+			owner = { NOT = { stability = -1 } }
+		}
+
+	}
+
+	option = {
+		name = "hashshashins_301_opta" #OK			
+		change_religion = HSH
+		HSH = { add_piety = 0.05 }
+	}
+
+}

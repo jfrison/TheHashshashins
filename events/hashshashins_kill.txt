@@ -1,0 +1,362 @@
+namespace = hashshashins
+
+# assassination opportunity
+country_event = {
+	id = hashshashins.1
+	title = "hashshashins_1_title"
+	desc = "hashshashins_1_desc"
+	picture = ASSASSINATION_eventPicture
+
+	trigger = {
+		tag = HSH
+		NOT = { has_country_flag = hashshashins_assassination_inprogress }
+		any_country = {
+			OR = {
+				NOT = { ROOT = { has_opinion = { who = PREV value = -50 } } }
+				is_rival = PREV 
+			}
+			has_regency = no
+		}
+	}
+	
+	immediate = {
+		hidden_effect = {
+			set_country_flag = hashshashins_assassination_inprogress
+			every_country = {
+				clr_country_flags = hashshashins_target
+			}
+			random_country = {
+				limit = {
+					OR = {
+						NOT = { ROOT = { has_opinion = { who = PREV value = -50 } } }
+						is_rival = PREV
+					}
+					has_regency = no
+				}
+				set_country_flag = hashshashins_target
+			}
+		}
+	}
+	      
+	
+	mean_time_to_happen = {
+		months = 240
+		
+		modifier = {
+			factor = 0.6
+			any_country = {
+				NOT = { ROOT = { has_opinion = { who = PREV value = -100 } } }
+				is_rival = PREV
+				has_regency = no
+			}
+		}
+
+		modifier = {				
+			factor = 0.8
+			has_idea_group = spy_ideas
+		}
+
+
+		modifier = {				
+			factor = 0.7
+			advisor = spymaster
+		}
+
+		modifier = {				
+			factor = 3.0
+			is_at_war = yes
+		}
+
+	}
+
+	option = {
+		name = "hashshashins_1_opta" #Organise an assassination			
+		add_years_of_income = -0.6
+		
+		random_country = {
+			limit = { has_country_flag = hashshashins_target }
+			country_event = {
+				id = "hashshashins.2"
+				days = 7
+			}
+			add_opinion = {
+				who = HSH
+				modifier = opinion_displeased
+				years = 10
+			}
+		}
+	}
+
+	option = {
+		name = "hashshashins_1_optb"	#Issue a threat
+		random_country = {
+			limit = { has_country_flag = hashshashins_target }
+			country_event = {
+				id = "hashshashins.3"
+				days = 7
+			}
+		}
+	}
+
+	option = {
+		name = "hashshashins_1_optc"  #Choose a minor target instead
+		random_country = {
+			limit = { has_country_flag = hashshashins_target }
+			add_years_of_income = -0.15
+			kill_leader = random
+		}
+		clr_country_flag = hashshashins_assassination_inprogress
+	}
+
+	option = {
+		name = "hashshashins_1_optd"  #Strengthen our network
+		add_piety = 0.10
+		add_prestige = -5
+		clr_country_flag = hashshashins_assassination_inprogress
+	}
+
+}
+
+# assassination attempt against us
+country_event = {
+	id = hashshashins.2
+	title = "hashshashins_2_title"
+	desc = "hashshashins_2_desc"
+	picture = ASSASSINATION_eventPicture
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		hidden_effect = {
+			clr_country_flag = hashshashin_assassination_succeeded
+			set_variable = { which = hashshashin_assassination_chance value = 0 }
+			if = { # At least 10% chance if the target has negative stability
+				limit = { NOT = { stability = 0 } }
+				change_variable = { which = hashshashin_assassination_chance value = 10 }
+			}
+			if = {
+				limit = { NOT = { stability = -1 } }
+				change_variable = { which = hashshashin_assassination_chance value = 10 }
+			}
+			if = {
+				limit = { NOT = { stability = -2 } }
+				change_variable = { which = hashshashin_assassination_chance value = 10 }
+			}
+			if = { # Higher piety = more zealous assassins = higher chances
+				limit = { HSH = { piety = 0.20 } }
+				change_variable = { which = hashshashin_assassination_chance value = 10 }
+			}
+			if = {
+				limit = { HSH = { piety = 0.40 } }
+				change_variable = { which = hashshashin_assassination_chance value = 10 }
+			}
+			if = {
+				limit = { HSH = { piety = 0.60 } }
+				change_variable = { which = hashshashin_assassination_chance value = 10 }
+			}
+			if = {
+				limit = { HSH = { piety = 0.80 } }
+				change_variable = { which = hashshashin_assassination_chance value = 10 }
+			}
+			if = {
+				limit = { HSH = { piety = 1.00 } }
+				change_variable = { which = hashshashin_assassination_chance value = 10 }
+			}
+			if = {
+				limit = { HSH = { advisor = spymaster } }
+				change_variable = { which = hashshashin_assassination_chance value = 20 }
+			}
+			if = {
+				limit = { has_idea_group = spy_ideas }
+				change_variable = { which = hashshashin_assassination_chance value = -20 }
+			}
+			if = {
+				limit = { advisor = spymaster }
+				change_variable = { which = hashshashin_assassination_chance value = -20 }
+			}
+
+			random_list = {
+				10 = {
+					if = {
+						limit = { check_variable = { which = hashshashin_assassination_chance value = 10 } }
+						set_country_flag = hashshashin_assassination_succeeded
+					}
+				}
+				10 = {
+					if = {
+						limit = { check_variable = { which = hashshashin_assassination_chance value = 20 } }
+						set_country_flag = hashshashin_assassination_succeeded
+					}
+				}
+				10 = {
+					if = {
+						limit = { check_variable = { which = hashshashin_assassination_chance value = 30 } }
+						set_country_flag = hashshashin_assassination_succeeded
+					}
+				}
+				10 = {
+					if = {
+						limit = { check_variable = { which = hashshashin_assassination_chance value = 40 } }
+						set_country_flag = hashshashin_assassination_succeeded
+					}
+				}
+				10 = {
+					if = {
+						limit = { check_variable = { which = hashshashin_assassination_chance value = 50 } }
+						set_country_flag = hashshashin_assassination_succeeded
+					}
+				}
+				10 = {
+					if = {
+						limit = { check_variable = { which = hashshashin_assassination_chance value = 60 } }
+						set_country_flag = hashshashin_assassination_succeeded
+					}
+				}
+				10 = {
+					if = {
+						limit = { check_variable = { which = hashshashin_assassination_chance value = 70 } }
+						set_country_flag = hashshashin_assassination_succeeded
+					}
+				}
+				10 = {
+					if = {
+						limit = { check_variable = { which = hashshashin_assassination_chance value = 80 } }
+						set_country_flag = hashshashin_assassination_succeeded
+					}
+				}
+				10 = {
+					if = {
+						limit = { check_variable = { which = hashshashin_assassination_chance value = 90 } }
+						set_country_flag = hashshashin_assassination_succeeded
+					}
+				}
+				10 = {
+					if = {
+						limit = { check_variable = { which = hashshashin_assassination_chance value = 100 } }
+						set_country_flag = hashshashin_assassination_succeeded
+					}
+				}
+			}
+		
+			if = {
+				limit = { has_country_flag = hashshashin_assassination_succeeded }
+				kill_ruler = yes
+				HSH = { # report a success
+					country_event = {
+						id = "hashshashins.4"
+						days = 7
+					}
+				}
+			}
+			if = {
+				limit = { NOT = { has_country_flag = hashshashin_assassination_succeeded } }
+				HSH = { # report a failure
+					country_event = {
+						id = "hashshashins.5"
+						days = 7
+					}
+				}
+			}
+		}
+
+	}
+	
+	option = {
+		name = "hashshashins_2_opta"
+	}
+
+}
+
+# we have been threatened
+country_event = {
+	id = hashshashins.3
+	title = "hashshashins_3_title"
+	desc = "hashshashins_3_desc"
+	picture = ASSASSINATION_eventPicture
+	
+	is_triggered_only = yes
+
+	option = {
+		name = "hashshashins_3_opta" # Pay for your life
+		ai_chance = { factor = 75 }
+		add_years_of_income = -3.0
+		HSH = { # Send money
+			country_event = {
+				id = "hashshashins.6"
+				days = 7
+			}
+		}
+	}
+	
+	option = {
+		name = "hashshashins_3_optb" # Ignore the threat
+		ai_chance = { factor = 20 }
+		country_event = {
+			id = "hashshashins.2"
+			days = 7
+		}
+	}
+
+	option = {
+		name = "hashshashins_3_optc" # Hunt for traitors
+		ai_chance = { factor = 5 }
+		add_stability = -1
+		HSH = { # report a failure
+			country_event = {
+				id = "hashshashins.5"
+				days = 7
+			}
+		}
+	}
+
+}
+
+# assassination succeeded
+country_event = {
+	id = hashshashins.4
+	title = "hashshashins_4_title"
+	desc = "hashshashins_4_desc"
+	picture = ASSASSINATION_eventPicture
+	
+	is_triggered_only = yes
+
+	option = {
+		name = "hashshashins_4_opta"
+		add_piety = 0.10
+		clr_country_flag = hashshashins_assassination_inprogress
+	}
+
+}
+# assassination failed
+country_event = {
+	id = hashshashins.5
+	title = "hashshashins_5_title"
+	desc = "hashshashins_5_desc"
+	picture = ASSASSINATION_eventPicture
+	
+	is_triggered_only = yes
+
+	option = {
+		name = "hashshashins_5_opta"
+		add_piety = -0.10
+		add_prestige = -10
+		clr_country_flag = hashshashins_assassination_inprogress
+	}
+
+}
+# ransom received
+country_event = {
+	id = hashshashins.6
+	title = "hashshashins_6_title"
+	desc = "hashshashins_6_desc"
+	picture = ASSASSINATION_eventPicture
+	
+	is_triggered_only = yes
+
+	option = {
+		name = "hashshashins_6_opta"
+		add_years_of_income = 3.0
+		clr_country_flag = hashshashins_assassination_inprogress
+	}
+
+}

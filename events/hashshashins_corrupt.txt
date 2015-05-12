@@ -1,0 +1,102 @@
+namespace = hashshashins
+
+# corrupting a merchant
+province_event = {
+	id = hashshashins.201
+	title = "hashshashins_201_title"
+	desc = "hashshashins_201_desc"
+	picture = ASSASSINATION_eventPicture
+	
+	hidden = yes
+
+	trigger = {
+		exists = HSH
+		has_discovered = HSH
+		religion_group = muslim
+		NOT = { owned_by = HSH }
+	}
+	
+	
+	mean_time_to_happen = {
+		months = 480
+		
+		modifier = {		
+			factor = 0.8
+			HSH = { advisor = spymaster }
+		}
+		modifier = {		
+			factor = 0.8
+			HSH = { DIP = 5 }
+		}
+		modifier = {		
+			factor = 0.8
+			HSH = { piety = 0.8 }
+		}
+		modifier = {		
+			factor = 0.8
+			HSH = { piety = 0.6 }
+		}
+		modifier = {		
+			factor = 0.7
+			religion = shiite
+		}
+		modifier = {		
+			factor = 0.6
+			owner = { NOT = { stability = 0 } }
+		}
+		modifier = {		
+			factor = 0.5
+			owner = { NOT = { stability = -1 } }
+		}
+
+	}
+
+	option = {
+		name = "hashshashins_201_opta"
+		HSH = {
+			country_event = {
+				id = "hashshashins.202"
+				days = 1
+			}
+		}
+	}
+
+}
+
+country_event = {
+	id = hashshashins.202
+	title = "hashshashins_202_title"
+	desc = "hashshashins_202_desc"
+	picture = ASSASSINATION_eventPicture
+	
+	is_triggered_only = yes
+
+	trigger = {
+		tag = HSH
+	}
+
+	option = {
+		name = "hashshashins_202_opta" #Corrupt them			
+		add_years_of_income = -0.1
+		FROM = {
+			add_trade_modifier = {
+				who = HSH
+				duration = 365
+				power = 10
+				key = corrupted_merchants
+			}
+			owner = {
+				add_casus_belli = {
+					type = cb_trade_war_triggered
+					months = 24
+					target = HSH
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "hashshashins_202_optb"	#It is too expensive
+	}
+
+}

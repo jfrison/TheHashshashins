@@ -1,0 +1,18 @@
+# Triggered modifiers are here.
+# these are checked for each countries once/month and then applied.
+#
+# Effects are fully scriptable here.
+
+# This triggered modifier will be useful both as a warning and in order to have a way to visualise the variable
+hashshashins_outposts_discovered = {
+	potential = {
+		tag = HSH
+	}
+	
+	trigger = {
+		tag = HSH
+		check_variable = { which = hashshashins_discovered value = 50 }
+	}
+	
+	global_spy_defence = -0.4
+}

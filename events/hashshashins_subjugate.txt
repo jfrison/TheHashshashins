@@ -9,6 +9,7 @@ country_event = {
 
 	trigger = {
 		tag = HSH
+		is_subject = no
 		NOT = { has_country_flag = hashshashins_subjugation_inprogress }
 		any_country = {
 #		any_neighbor_country = {
@@ -25,7 +26,7 @@ country_event = {
 		hidden_effect = {
 			set_country_flag = hashshashins_subjugation_inprogress
 			every_country = {
-				clr_country_flags = hashshashins_target
+				clr_country_flag = hashshashins_target
 			}
 			random_country = {
 #			random_neighbor_country = {

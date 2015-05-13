@@ -43,7 +43,7 @@ country_event = {
 	
 	option = {
 		name = "hashshashins_502_opta" #What a relief!
-		capital {
+		capital_scope = {
 			add_province_modifier = {
 				name = hidden_fortress
 				duration = -1

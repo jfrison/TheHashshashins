@@ -1,2 +1,53 @@
 I need more things to play tall and develop the fortress, import rare books, build mausoleum, improve security, ... 
 Decisions should be a good way to do most of this. 
+
+potential ideas: 
+
+mausoleum
+global_missionary_strength = 0.01
+& more hashshashins_301_title => I'ld rather have piety for my own men => annual ceremony event
+
+underground network
+reduce change_variable on search
+
+underground city 
+land_forcelimit_modifier = 1.5 => Cancels part of the gov malus
+underground network needed
+
+training_facilities
+army_tradition = 1
+troglodyte_city needed
+
+observatory
+technology_cost = -0.01
+=> event: astral omen +1 stab
+
+botanical garden
+technology_cost = -0.01
+spy_offence = 0.1
+
+alchemy_laboratory
+technology_cost = -0.01
+spy_offence = 0.1
+artillery_power = 0.1
+botanical garden needed
+
+great_library
+advisor_cost = -0.5 #all your men will have access to knowledge
+advisor_pool = 1
+# allows events to buy books
+# books unlock a triggered_modifier => technology_cost 
+# I might also add special events for special books
+
+pigeon_loft
+global_autonomy = -0.1
+diplomats = 1
+diplomatic_upkeep = 1
+
+vassal_income = 0.1
+core_creation = -0.5
+inflation_reduction = 0.1
+interest = -1
+diplomatic_reputation = 5
+siege_ability = 0.1
+leader_siege = 1

@@ -14,14 +14,14 @@ hashshashin_ideas = {
 	}
 	free = yes
 	
-	zealous_companions = {
-		global_spy_offence = 0.25
-		tolerance_own = 2
-		discipline = 0.25
-	}
 	grandmaster_ijtihad = {
 		idea_cost = -0.2
 		technology_cost = -0.05
+	}
+	zealous_companions = {
+		spy_offence = 0.25
+		tolerance_own = 2
+		discipline = 0.25
 	}
 	infiltrators_influence = {
 		diplomatic_reputation = 2

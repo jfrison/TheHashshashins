@@ -18,8 +18,22 @@ province_event = {
 	
 	
 	mean_time_to_happen = {
-		months = 480
-		
+		months = 960
+		modifier = {		
+			factor = 0.7
+			has_trader = HSH
+		}
+		modifier = {		
+			factor = 0.7
+			trade_share = {
+				country = HSH
+				share = 10
+			}
+		}
+		modifier = {		
+			factor = 2.0
+			owner = { border_distance = { who = HSH  distance = 400 } }
+		}
 		modifier = {		
 			factor = 0.8
 			HSH = { advisor = spymaster }
@@ -32,9 +46,23 @@ province_event = {
 			factor = 0.8
 			HSH = { piety = 0.8 }
 		}
-		modifier = {		
-			factor = 0.8
-			HSH = { piety = 0.6 }
+		modifier = {
+			factor = 0.6
+			HSH = {
+			has_global_modifier_value = {
+				which = spy_offence
+				value = 0.6
+				}
+			}
+		}
+		modifier = {
+			factor = 0.6
+			HSH = {
+			has_global_modifier_value = {
+				which = spy_offence
+				value = 1.0
+				}
+			}
 		}
 		modifier = {		
 			factor = 0.7

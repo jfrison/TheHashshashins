@@ -9,7 +9,8 @@ country_event = {
 
 	trigger = {
 		exists = HSH
-		has_discovered = HSH
+		capital_scope = { HSH = { has_discovered = PREV } } 
+		HSH = { capital_scope = { ROOT = { has_discovered = PREV } } }
 		NOT = { tag = HSH }
 		NOT = { HSH = { check_variable = { which = hashshashins_discovered value = 100 } } }
 	}
@@ -20,11 +21,11 @@ country_event = {
 		
 		modifier = {		
 			factor = 0.7
-			years_of_income = 1.5
+			years_of_income = 0.9
 		}
 		modifier = {		
 			factor = 3.0
-			NOT = { years_of_income = 0.5 }
+			NOT = { years_of_income = 0.3 }
 		}
 		modifier = {		
 			factor = 0.8
@@ -114,7 +115,7 @@ country_event = {
 				factor = 0.7
 			}
 		}
-		add_years_of_income = -1.0
+		add_years_of_income = -0.6
 		HSH = { 
 			change_variable = { which = hashshashins_discovered value = 1 } 
 			random_list = {

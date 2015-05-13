@@ -18,12 +18,9 @@ hashshashin_theocracy = {
 	ai_importance = 1
 
 	#bonus
-	spy_offence = 0.30
-	discipline = 0.25
-	land_morale = 0.5
-	global_autonomy = 0.25
 	unjustified_demands = -0.3
 	#malus
+	global_autonomy = 0.25
 	tolerance_heretic = -3
 	tolerance_heathen = -1
 	global_manpower_modifier = -1.0

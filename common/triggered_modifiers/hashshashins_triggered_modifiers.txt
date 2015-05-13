@@ -16,3 +16,71 @@ hashshashins_outposts_discovered = {
 	
 	global_spy_defence = -0.4
 }
+
+hashshashins_deadly_zeal1 = {
+	potential = {
+		tag = HSH
+		NOT = { piety = 0.75 }
+	}
+	
+	trigger = {
+		government = hashshashin_theocracy
+		piety = 0.5
+		NOT = { piety = 0.7 }
+	}
+	
+	spy_offence = 0.30
+	discipline = 0.25
+	land_morale = 0.5
+}
+
+hashshashins_deadly_zeal2 = {
+	potential = {
+		tag = HSH
+		piety = 0.5
+		NOT = { piety = 0.95 }
+	}
+	
+	trigger = {
+		government = hashshashin_theocracy
+		piety = 0.7
+		NOT = { piety = 0.9 }
+	}
+	
+	spy_offence = 0.40
+	discipline = 0.25
+	land_morale = 0.5
+}
+
+hashshashins_deadly_zeal3 = {
+	potential = {
+		tag = HSH
+		piety = 0.7
+	}
+	
+	trigger = {
+		government = hashshashin_theocracy
+		piety = 0.9
+		NOT = { piety = 1.0 }
+	}
+	
+	spy_offence = 0.50
+	discipline = 0.3
+	land_morale = 0.6
+}
+
+hashshashins_deadly_zeal4 = {
+	potential = {
+		tag = HSH
+		piety = 0.9
+	}
+	
+	trigger = {
+		government = hashshashin_theocracy
+		piety = 1.0
+	}
+	
+	spy_offence = 0.70
+	discipline = 0.35
+	land_morale = 0.7
+}

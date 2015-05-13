@@ -35,10 +35,11 @@ country_decisions = {
 			any_owned_province = {
 				has_province_modifier = hidden_fortress
 			}
-			check_variable = { which = hashshashins_discovered value = 1 }
+			check_variable = { which = hashshashins_discovered value = 5 }
 		}
 		allow = {
 			is_at_war = no
+			NOT = { has_country_flag = renovate_fortress_inprogress }
 			years_of_income = 1.0
 			OR = {
 				NOT = { check_variable = { which = hashshashins_discovered value = 20 } }

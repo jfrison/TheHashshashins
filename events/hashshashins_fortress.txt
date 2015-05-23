@@ -19,10 +19,28 @@ country_event = {
 
 	option = {
 		name = "hashshashins_501_opta" #This is catastrophic
+		if = {
+			limit = {
+				any_owned_province = {
+					has_province_modifier = hashshashin_library
+				}
+			}
+			set_variable = { which = great_books value = 0 }
+		}
 		every_owned_province = {
 			limit = { has_province_modifier = hidden_fortress }
 			remove_province_modifier = hidden_fortress
 			# we should also remove all the modifiers which are related to the fortress
+			remove_province_modifier = hashshashin_mausoleum
+			remove_province_modifier = underground_network
+			remove_province_modifier = underground_city
+			remove_province_modifier = hashshashin_training_facilities
+			remove_province_modifier = hashshashin_observatory
+			remove_province_modifier = hashshashin_botanical_garden
+			remove_province_modifier = hashshashin_alchemy_laboratory
+			remove_province_modifier = hashshashin_library
+			remove_province_modifier = hashshashin_pigeon_loft
+			remove_province_modifier = hashshashin_medecine_academy
 		}
 	}
 
@@ -73,7 +91,11 @@ country_event = {
 				has_province_modifier = hidden_fortress
 			}
 		}
-		change_variable = { which = hashshashins_discovered value = -5 }
+		change_variable = { which = hashshashins_discovered value = -3 }
+		if = {
+			limit = { any_owned_province = { has_province_modifier = underground_network } }
+			change_variable = { which = hashshashins_discovered value = -2 } 
+		}
 		clr_country_flag = renovate_fortress_inprogress
 	}
 	option = {

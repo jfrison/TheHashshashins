@@ -5,7 +5,7 @@ province_event = {
 	id = hashshashins.201
 	title = "hashshashins_201_title"
 	desc = "hashshashins_201_desc"
-	picture = ASSASSINATION_eventPicture
+	picture = CORRUPTION_eventPicture
 	
 	hidden = yes
 
@@ -18,20 +18,35 @@ province_event = {
 	
 	
 	mean_time_to_happen = {
-		months = 960
+		months = 7200
 		modifier = {		
-			factor = 0.7
+			factor = 0.25
 			has_trader = HSH
 		}
 		modifier = {		
-			factor = 0.7
+			factor = 0.4
+			trade_share = {
+				country = HSH
+				share = 1
+			}
+		}
+		modifier = {		
+			factor = 0.4
 			trade_share = {
 				country = HSH
 				share = 10
 			}
 		}
 		modifier = {		
-			factor = 2.0
+			factor = 1.5
+			owner = { border_distance = { who = HSH  distance = 200 } }
+		}
+		modifier = {		
+			factor = 3.0
+			owner = { border_distance = { who = HSH  distance = 300 } }
+		}
+		modifier = {		
+			factor = 4.0
 			owner = { border_distance = { who = HSH  distance = 400 } }
 		}
 		modifier = {		
@@ -76,6 +91,10 @@ province_event = {
 			factor = 0.5
 			owner = { NOT = { stability = -1 } }
 		}
+		modifier = {		
+			factor = 0.5
+			owner = { NOT = { stability = -2 } }
+		}
 
 	}
 
@@ -105,11 +124,11 @@ country_event = {
 
 	option = {
 		name = "hashshashins_202_opta" #Corrupt them			
-		add_years_of_income = -0.1
+		add_years_of_income = -0.2
 		FROM = {
 			add_trade_modifier = {
 				who = HSH
-				duration = 365
+				duration = 730
 				power = 10
 				key = corrupted_merchants
 			}

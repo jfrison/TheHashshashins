@@ -17,6 +17,26 @@ hashshashins_outposts_discovered = {
 	global_spy_defence = -0.4
 }
 
+# Great library
+hashshashin_great_library = {
+	potential = {
+		tag = HSH
+	}
+	
+	trigger = {
+		any_owned_province = {
+			has_province_modifier = hashshashin_library
+		}
+		check_variable = { which = great_books value = 20 }
+	}
+
+	technology_cost = -0.10
+
+}
+
+#####
+## Piety modifiers
+
 hashshashins_deadly_zeal1 = {
 	potential = {
 		tag = HSH

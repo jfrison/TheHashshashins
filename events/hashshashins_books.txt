@@ -1,0 +1,96 @@
+namespace = hashshashins
+
+# discovered a new book
+country_event = {
+	id = hashshashins.601
+	title = "hashshashins_601_title"
+	desc = "hashshashins_601_desc"
+	picture = BIG_BOOK_eventPicture
+
+	trigger = {
+		tag = HSH
+		any_owned_province = {
+			has_province_modifier = hashshashin_library
+		}
+	}
+	
+	
+	mean_time_to_happen = {
+		months = 48
+		
+		modifier = {		
+			factor = 0.8
+			DIP = 6
+		}
+		modifier = {		
+			factor = 0.8
+			DIP = 5
+		}
+		modifier = {		
+			factor = 0.8
+			advisor = philosopher
+		}
+		modifier = {		
+			factor = 0.8
+			advisor = natural_scientist
+		}
+		modifier = {		
+			factor = 0.8
+			advisor = theologian 
+		}
+		modifier = {		
+			factor = 0.8
+			piety = 1.0
+		}
+		modifier = {		
+			factor = 0.8
+			piety = 0.75
+		}
+		modifier = {		
+			factor = 2.0
+			check_variable = { which = great_books value = 2 }
+		}
+		modifier = {		
+			factor = 2.0
+			check_variable = { which = great_books value = 4 }
+		}
+		modifier = {		
+			factor = 2.0
+			check_variable = { which = great_books value = 6 }
+		}
+		modifier = {		
+			factor = 2.0
+			check_variable = { which = great_books value = 10 }
+		}
+		modifier = {		
+			factor = 4.0
+			check_variable = { which = great_books value = 20 }
+		}
+
+	}
+
+	option = {
+		name = "hashshashins_601_opta" # Buy it			
+		add_years_of_income = -0.3
+		add_country_modifier = {
+			name = hashshashin_new_book
+			duration = 730
+		}
+		change_variable = { which = great_books value = 1 }
+		hidden_effect = {
+			# random special book (should trigger story-telling events?)
+			random_list = {
+				10 = { set_country_flag = special_book_astronomy }
+				10 = { set_country_flag = special_book_alchemy }
+				10 = { set_country_flag = special_book_herbarium }
+				10 = { set_country_flag = special_book_medecine }
+				60 = { }
+			}
+		}
+	}
+	option = {
+		name = "hashshashins_601_optb" # Too expensive	
+		add_prestige = -5
+	}
+
+}

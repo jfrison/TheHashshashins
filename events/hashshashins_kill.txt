@@ -9,12 +9,6 @@ country_event = {
 
 	is_triggered_only = yes # should be triggered by a hidden event from the victim
 	
-	immediate = {
-		hidden_effect = {
-			set_country_flag = hashshashins_assassination_inprogress
-		}
-	}
-	
 	option = {
 		name = "hashshashins_1_opta" #Organise an assassination			
 		add_years_of_income = -0.6
@@ -325,6 +319,12 @@ country_event = {
 		}
 	}
 
+	immediate = {
+		hidden_effect = {
+			HSH = { set_country_flag = hashshashins_assassination_inprogress }
+		}
+	}
+
 	mean_time_to_happen = {
 		months = 360
 
@@ -430,9 +430,11 @@ country_event = {
 
 	option = {
 		name = "hashshashins_7_opta"
-		country_event = {
-			id = hashshashins.1
-			days = 3
+		HSH = {
+			country_event = {
+				id = hashshashins.1
+				days = 3
+			}
 		}
 	}
 

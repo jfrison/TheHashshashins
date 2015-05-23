@@ -15,3 +15,59 @@ hidden_fortress = {
 	local_autonomy = -0.2
 	army_tradition = 2.0
 }
+
+
+#####
+# Fortress improvements 
+
+hashshashin_mausoleum = {
+	global_missionary_strength = 0.01
+}
+
+underground_network = {
+}
+
+underground_city = { 
+	land_forcelimit_modifier = 1.5
+}
+
+hashshashin_training_facilities = {
+	army_tradition = 1
+}
+
+hashshashin_observatory = {
+	technology_cost = -0.01
+}
+
+hashshashin_botanical_garden = {
+	technology_cost = -0.01
+	spy_offence = 0.1
+}
+
+hashshashin_alchemy_laboratory = {
+	technology_cost = -0.01
+	spy_offence = 0.1
+	artillery_power = 0.1
+}
+
+hashshashin_library = {
+	advisor_cost = -0.5
+	advisor_pool = 1
+}
+
+hashshashin_pigeon_loft = {
+	global_autonomy = -0.1
+	diplomats = 1
+	diplomatic_upkeep = 1
+}
+
+hashshashin_medecine_academy = {
+	technology_cost = -0.01
+}
+
+#############################
+## Temporary event modifiers
+
+hashshashin_new_book = {
+	technology_cost = -0.10
+}

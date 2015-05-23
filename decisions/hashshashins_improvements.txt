@@ -1,0 +1,421 @@
+country_decisions = {
+
+##################################
+########### Building decisions
+
+	build_hashshashin_mausoleum = {
+		potential = {
+			tag = HSH
+			government = hashshashin_theocracy
+			any_owned_province = {
+				has_province_modifier = hidden_fortress
+			}
+			NOT = {
+				any_owned_province = {
+					has_province_modifier = hashshashin_mausoleum
+				}
+			}
+		}
+		allow = {
+			is_at_war = no
+			piety = 1.0
+			years_of_income = 2.0
+			adm_power = 25
+		}
+		effect = {
+			add_years_of_income = -2.0
+			add_adm_power = -25
+			random_owned_province = {
+				limit = { has_province_modifier = hidden_fortress }
+				add_province_modifier = {
+					name = hashshashin_mausoleum
+					duration = -1
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	build_underground_network = {
+		potential = {
+			tag = HSH
+			government = hashshashin_theocracy
+			any_owned_province = {
+				has_province_modifier = hidden_fortress
+			}
+			NOT = {
+				any_owned_province = {
+					has_province_modifier = underground_network
+				}
+			}
+		}
+		allow = {
+			is_at_war = no
+			advisor = fortification_expert
+			years_of_income = 2.0
+			adm_power = 25
+		}
+		effect = {
+			add_years_of_income = -2.0
+			add_adm_power = -25
+			random_owned_province = {
+				limit = { has_province_modifier = hidden_fortress }
+				add_province_modifier = {
+					name = underground_network
+					duration = -1
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	build_underground_city = {
+		potential = {
+			tag = HSH
+			government = hashshashin_theocracy
+			any_owned_province = {
+				has_province_modifier = hidden_fortress
+				has_province_modifier = underground_network
+			}
+			NOT = {
+				any_owned_province = {
+					has_province_modifier = underground_city
+				}
+			}
+		}
+		allow = {
+			is_at_war = no
+			OR = {
+				any_owned_province = {
+					has_province_modifier = hashshashin_alchemy_laboratory
+				}
+				mil_tech = 10 # should correspond to culverin for cannon powder, but bronze mortar is at tech 7
+				chinese_region = { has_discovered = HSH }
+			}
+			years_of_income = 2.0
+			adm_power = 25
+		}
+		effect = {
+			add_years_of_income = -2.0
+			add_adm_power = -25
+			random_owned_province = {
+				limit = { has_province_modifier = hidden_fortress }
+				add_province_modifier = {
+					name = underground_city
+					duration = -1
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	build_hashshashin_training_facilities = {
+		potential = {
+			tag = HSH
+			government = hashshashin_theocracy
+			any_owned_province = {
+				has_province_modifier = hidden_fortress
+				has_province_modifier = underground_city
+			}
+			NOT = {
+				any_owned_province = {
+					has_province_modifier = hashshashin_training_facilities
+				}
+			}
+		}
+		allow = {
+			is_at_war = no
+			advisor = recruitmaster
+			years_of_income = 2.0
+			adm_power = 25
+		}
+		effect = {
+			add_years_of_income = -2.0
+			add_adm_power = -25
+			random_owned_province = {
+				limit = { has_province_modifier = hidden_fortress }
+				add_province_modifier = {
+					name = hashshashin_training_facilities
+					duration = -1
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	build_hashshashin_observatory = {
+		potential = {
+			tag = HSH
+			government = hashshashin_theocracy
+			any_owned_province = {
+				has_province_modifier = hidden_fortress
+			}
+			NOT = {
+				any_owned_province = {
+					has_province_modifier = hashshashin_observatory
+				}
+			}
+		}
+		allow = {
+			is_at_war = no
+			advisor = natural_scientist
+			has_country_flag = special_book_astronomy
+			years_of_income = 2.0
+			adm_power = 25
+		}
+		effect = {
+			add_years_of_income = -2.0
+			add_adm_power = -25
+			random_owned_province = {
+				limit = { has_province_modifier = hidden_fortress }
+				add_province_modifier = {
+					name = hashshashin_observatory
+					duration = -1
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	build_hashshashin_botanical_garden = {
+		potential = {
+			tag = HSH
+			government = hashshashin_theocracy
+			any_owned_province = {
+				has_province_modifier = hidden_fortress
+			}
+			NOT = {
+				any_owned_province = {
+					has_province_modifier = hashshashin_botanical_garden
+				}
+			}
+		}
+		allow = {
+			is_at_war = no
+			advisor = natural_scientist
+			has_country_flag = special_book_herbarium
+			years_of_income = 2.0
+			adm_power = 25
+		}
+		effect = {
+			add_years_of_income = -2.0
+			add_adm_power = -25
+			random_owned_province = {
+				limit = { has_province_modifier = hidden_fortress }
+				add_province_modifier = {
+					name = hashshashin_botanical_garden
+					duration = -1
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	build_hashshashin_alchemy_laboratory = {
+		potential = {
+			tag = HSH
+			government = hashshashin_theocracy
+			any_owned_province = {
+				has_province_modifier = hidden_fortress
+				has_province_modifier = hashshashin_botanical_garden
+			}
+			NOT = {
+				any_owned_province = {
+					has_province_modifier = hashshashin_alchemy_laboratory
+				}
+			}
+		}
+		allow = {
+			is_at_war = no
+			has_country_flag = special_book_alchemy
+			years_of_income = 2.0
+			adm_power = 25
+		}
+		effect = {
+			add_years_of_income = -2.0
+			add_adm_power = -25
+			random_owned_province = {
+				limit = { has_province_modifier = hidden_fortress }
+				add_province_modifier = {
+					name = hashshashin_alchemy_laboratory
+					duration = -1
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	build_hashshashin_library = {
+		potential = {
+			tag = HSH
+			government = hashshashin_theocracy
+			any_owned_province = {
+				has_province_modifier = hidden_fortress
+			}
+			NOT = {
+				any_owned_province = {
+					has_province_modifier = hashshashin_library
+				}
+			}
+		}
+		allow = {
+			is_at_war = no
+			advisor = philosopher
+			years_of_income = 2.0
+			adm_power = 25
+		}
+		effect = {
+			add_years_of_income = -2.0
+			add_adm_power = -25
+			random_owned_province = {
+				limit = { has_province_modifier = hidden_fortress }
+				add_province_modifier = {
+					name = hashshashin_library
+					duration = -1
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}	
+
+	build_pigeon_loft = {
+		potential = {
+			tag = HSH
+			government = hashshashin_theocracy
+			any_owned_province = {
+				has_province_modifier = hidden_fortress
+			}
+			NOT = {
+				any_owned_province = {
+					has_province_modifier = hashshashin_pigeon_loft
+				}
+			}
+		}
+		allow = {
+			is_at_war = no
+			advisor = diplomat
+			years_of_income = 2.0
+			adm_power = 25
+		}
+		effect = {
+			add_years_of_income = -2.0
+			add_adm_power = -25
+			random_owned_province = {
+				limit = { has_province_modifier = hidden_fortress }
+				add_province_modifier = {
+					name = hashshashin_pigeon_loft
+					duration = -1
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}	
+
+	build_medecine_academy = {
+		potential = {
+			tag = HSH
+			government = hashshashin_theocracy
+			any_owned_province = {
+				has_province_modifier = hidden_fortress
+			}
+			NOT = {
+				any_owned_province = {
+					has_province_modifier = hashshashin_medecine_academy
+				}
+			}
+		}
+		allow = {
+			is_at_war = no
+			advisor = diplomat
+			has_country_flag = special_book_medecine
+			years_of_income = 2.0
+			adm_power = 25
+			OR = {
+				any_owned_province = {
+					has_province_modifier = hashshashin_alchemy_laboratory
+				}
+				adm_power = 100
+			}
+		}
+		effect = {
+			add_years_of_income = -2.0
+			add_adm_power = -25
+			random_owned_province = {
+				limit = { has_province_modifier = hidden_fortress }
+				add_province_modifier = {
+					name = hashshashin_medecine_academy
+					duration = -1
+				}
+				if = {
+					limit = { NOT = { has_province_modifier = hashshashin_alchemy_laboratory } }
+					owner = { add_adm_power = -75 }
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}	
+
+#######################################
+#### Decisions to *use* the buildings
+
+	organise_hashshashin_ceremony = {
+		potential = {
+			tag = HSH
+			government = hashshashin_theocracy
+			any_owned_province = {
+				has_province_modifier = hashshashin_mausoleum
+			}
+			OR = {
+				has_country_flag = hashshashin_ceremony_organised
+				had_country_flag = {
+					flag = hashshashin_ceremony_organised
+					days = 365
+				}
+			}
+		}
+		allow = {
+			is_at_war = no
+			years_of_income = 0.5
+			dip_power = 10
+		}
+		effect = {
+			add_years_of_income = -0.5
+			add_piety = 0.1
+			if = {
+				limit = {
+					had_country_flag = {
+						flag = hashshashin_ceremony_organised
+						days = 1460
+					}
+				}
+				add_piety = 0.1
+			}
+			add_dip_power = -10
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	
+}

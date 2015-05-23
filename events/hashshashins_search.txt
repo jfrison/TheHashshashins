@@ -75,6 +75,10 @@ country_event = {
 			factor = 1.4
 			HSH = { advisor = spymaster }
 		}
+		modifier = {		
+			factor = 2.0
+			HSH = { NOT = { any_owned_province = { has_province_modifier = underground_network } } }
+		}
 
 	}
 
@@ -117,7 +121,10 @@ country_event = {
 		}
 		add_years_of_income = -0.6
 		HSH = { 
-			change_variable = { which = hashshashins_discovered value = 1 } 
+			if = {
+				limit = { NOT = { any_owned_province = { has_province_modifier = underground_network } } }
+				change_variable = { which = hashshashins_discovered value = 1 } 
+			}
 			random_list = {
 				50 = {
 					set_country_flag = hashshashin_traitor

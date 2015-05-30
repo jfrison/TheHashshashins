@@ -1,0 +1,147 @@
+namespace = hashshashins
+
+# hiring a traitor in a siege (this first event just fires a second one)
+province_event = {
+	id = hashshashins.701
+	title = "hashshashins_701_title"
+	desc = "hashshashins_701_desc"
+	picture = SIEGE_eventPicture
+
+	hidden = yes
+	
+	trigger = {
+		exists = HSH
+		sieged_by = HSH
+	}
+	
+	
+	mean_time_to_happen = {
+		months = 48
+		
+		modifier = {		
+			factor = 1.6
+			NOT = { religion_group = muslim }
+		}
+		modifier = {		
+			factor = 0.8
+			HSH = { advisor = spymaster }
+		}
+		modifier = {				
+			factor = 0.8
+			HSH = { has_idea_group = spy_ideas }
+		}
+		modifier = {				
+			factor = 1.3
+			owner = { has_idea_group = spy_ideas }
+		}
+		modifier = {
+			factor = 0.8
+			HSH = {
+			has_global_modifier_value = {
+				which = spy_offence
+				value = 0.6
+				}
+			}
+		}
+		modifier = {
+			factor = 0.8
+			HSH = {
+			has_global_modifier_value = {
+				which = spy_offence
+				value = 0.9
+				}
+			}
+		}
+		modifier = {
+			factor = 0.8
+			HSH = {
+			has_global_modifier_value = {
+				which = spy_offence
+				value = 1.2
+				}
+			}
+		}
+		modifier = {
+			factor = 1.5
+			owner = {
+				has_global_modifier_value = {
+					which = global_spy_defence
+					value = 0.20
+				}
+			}
+		}
+		modifier = {		
+			factor = 0.8
+			HSH = { DIP = 5 }
+		}
+		modifier = {		
+			factor = 0.8
+			HSH = { piety = 1.0 }
+		}
+		modifier = {		
+			factor = 0.8
+			HSH = { piety = 0.9 }
+		}
+		modifier = {		
+			factor = 0.8
+			HSH = { piety = 0.8 }
+		}
+		modifier = {		
+			factor = 0.6
+			owner = { NOT = { stability = 0 } }
+		}
+		modifier = {		
+			factor = 0.5
+			owner = { NOT = { stability = -1 } }
+		}
+		modifier = {		
+			factor = 0.5
+			owner = { NOT = { stability = -2 } }
+		}
+
+	}
+
+	option = {
+		name = "hashshashins_701_opta" #OK			
+		HSH = {
+			country_event = {
+				id = "hashshashins.702"
+				days = 1
+			}
+		}
+	}
+
+}
+
+# make the choice
+country_event = {
+	id = hashshashins.702
+	title = "hashshashins_702_title"
+	desc = "hashshashins_702_desc"
+	picture = SIEGE_eventPicture
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = HSH
+		FROM = { sieged_by = HSH }
+	}
+
+	option = {
+		name = "hashshashins_702_opta" #Take full advantage of this
+		add_years_of_income = -1.0
+		add_dip_power = -2
+		FROM = { change_controller = HSH }
+	}
+	
+	option = {
+		name = "hashshashins_702_optb" #Negotiate a cheap deal
+		add_years_of_income = -0.2
+		FROM = { change_siege = 2 }
+	}
+
+	option = {
+		name = "hashshashins_702_optc" #We do not need that	
+	}
+
+}

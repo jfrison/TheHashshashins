@@ -84,7 +84,25 @@ country_event = {
 				10 = { set_country_flag = special_book_alchemy }
 				10 = { set_country_flag = special_book_herbarium }
 				10 = { set_country_flag = special_book_medecine }
-				60 = { }
+				10 = {
+					random_country = {
+						limit = {
+							NOT = {
+								HSH = {
+									has_discovered = PREV
+								} 
+							}
+							any_country = {
+								has_discovered = PREV
+								technology_group = muslim
+							}
+						}
+						capital_scope = {
+							discover_country = HSH
+						}
+					}
+				}
+				50 = { }
 			}
 		}
 	}

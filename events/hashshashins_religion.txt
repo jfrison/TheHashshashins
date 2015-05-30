@@ -5,7 +5,7 @@ province_event = {
 	id = hashshashins.301
 	title = "hashshashins_301_title"
 	desc = "hashshashins_301_desc"
-	picture = ASSASSINATION_eventPicture
+	picture = RELIGIOUS_CONVERSION_eventPicture
 
 	trigger = {
 		exists = HSH

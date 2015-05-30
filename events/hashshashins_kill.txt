@@ -405,7 +405,7 @@ country_event = {
 			advisor = spymaster
 		}
 		modifier = {
-			factor = 0.6
+			factor = 1.6
 			has_global_modifier_value = {
 				which = global_spy_defence
 				value = 0.25

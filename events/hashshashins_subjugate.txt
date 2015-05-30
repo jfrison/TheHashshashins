@@ -5,7 +5,7 @@ country_event = {
 	id = hashshashins.101
 	title = "hashshashins_101_title"
 	desc = "hashshashins_101_desc"
-	picture = ASSASSINATION_eventPicture
+	picture = DIPLOMACY_eventPicture
 
 	trigger = {
 		tag = HSH
@@ -196,7 +196,7 @@ country_event = {
 	id = hashshashins.103
 	title = "hashshashins_103_title"
 	desc = "hashshashins_103_desc"
-	picture = ASSASSINATION_eventPicture
+	picture = DIPLOMACY_eventPicture
 	
 	is_triggered_only = yes
 
@@ -219,7 +219,7 @@ country_event = {
 	id = hashshashins.104
 	title = "hashshashins_104_title"
 	desc = "hashshashins_104_desc"
-	picture = ASSASSINATION_eventPicture
+	picture = DIPLOMACY_eventPicture
 	
 	is_triggered_only = yes
 
@@ -243,7 +243,7 @@ country_event = {
 	id = hashshashins.105
 	title = "hashshashins_105_title"
 	desc = "hashshashins_105_desc"
-	picture = ASSASSINATION_eventPicture
+	picture = DIPLOMACY_eventPicture
 	
 	is_triggered_only = yes
 

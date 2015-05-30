@@ -1,6 +1,5 @@
 Custom_tooltips
-Books to discover countries?? (risk of sharing the discov with tech group => discover only if someone in tech group has discovered? or in religion group?)
-
+Story-telling events for special books
 
 observatory
 => event: astral omen +1 stab (but lose some piety => trigger if stab<3)

@@ -13,7 +13,7 @@ hidden_fortress = {
 	local_hostile_attrition = 5
 	max_attrition = 5
 	local_autonomy = -0.2
-	army_tradition = 2.0
+	army_tradition = 1.0
 }
 
 
@@ -33,6 +33,7 @@ underground_city = {
 
 hashshashin_training_facilities = {
 	army_tradition = 1
+	leader_land_manuever = 1
 }
 
 hashshashin_observatory = {
